@@ -3,7 +3,7 @@ warnings.simplefilter(action='ignore', category=FutureWarning)
 
 import pandas as pd
 import numpy as np
-import geopandas as gpd
+# import geopandas as gpd
 from shapely.geometry import Point
 
 pd.options.display.max_columns = 500
@@ -25,52 +25,52 @@ class SuitabilityScoreFramework:
                         'Nottingham': [52.947166321488545, -1.1474515251029],
                         'Dublin': [53.347278280585556, -6.254476908039269]
                         }
-    @staticmethod
-    def calculate_distances(start_location: list, end_location: list):
-        """
-        Calculates the distance in kms between two lat lons
-        Args:
-            start_location: the lat / lons of the start location
-            end_location: the lat / lons of the end location
-
-        Returns:
-            the distance in km between the two
-        """
-
-        geom = [Point(xy) for xy in zip([start_location[0], end_location[0]],
-                                        [start_location[1], end_location[1]]
-                                        )]
-        gdf = gpd.GeoDataFrame(geometry=geom, crs={'init': 'epsg:4326'})
-        gdf.to_crs(epsg=3310, inplace=True)
-        data_distance = gdf.distance(gdf.shift())[1]
-        data_distance_km = data_distance / 1000
-
-        return data_distance_km
-
-
-    def map_all_distances(self, locations: list):
-        """
-        This map returns a dictionary with all the possible combinations of distances mapped out.
-        It calculates the distance between the starting position and the other
-        Args:
-            locations: the locations from the data which need to be mapped
-
-        Returns:
-            a dictionary with each desination mapped from the starting point
-        """
-
-        all_mapped_distances = {}
-
-        for start_city in locations:
-            if start_city not in all_mapped_distances.keys():
-                all_mapped_distances[start_city] = {}
-
-            for end_city in locations:
-                distance_km = self.calculate_distances(start_location=self.distance_mapping[start_city], end_location=self.distance_mapping[end_city])
-                if end_city not in all_mapped_distances[start_city].keys():
-                    all_mapped_distances[start_city][end_city] = distance_km
-
-        return all_mapped_distances
+    # @staticmethod
+    # def calculate_distances(start_location: list, end_location: list):
+    #     """
+    #     Calculates the distance in kms between two lat lons
+    #     Args:
+    #         start_location: the lat / lons of the start location
+    #         end_location: the lat / lons of the end location
+    #
+    #     Returns:
+    #         the distance in km between the two
+    #     """
+    #
+    #     geom = [Point(xy) for xy in zip([start_location[0], end_location[0]],
+    #                                     [start_location[1], end_location[1]]
+    #                                     )]
+    #     gdf = gpd.GeoDataFrame(geometry=geom, crs={'init': 'epsg:4326'})
+    #     gdf.to_crs(epsg=3310, inplace=True)
+    #     data_distance = gdf.distance(gdf.shift())[1]
+    #     data_distance_km = data_distance / 1000
+    #
+    #     return data_distance_km
+    #
+    #
+    # def map_all_distances(self, locations: list):
+    #     """
+    #     This map returns a dictionary with all the possible combinations of distances mapped out.
+    #     It calculates the distance between the starting position and the other
+    #     Args:
+    #         locations: the locations from the data which need to be mapped
+    #
+    #     Returns:
+    #         a dictionary with each desination mapped from the starting point
+    #     """
+    #
+    #     all_mapped_distances = {}
+    #
+    #     for start_city in locations:
+    #         if start_city not in all_mapped_distances.keys():
+    #             all_mapped_distances[start_city] = {}
+    #
+    #         for end_city in locations:
+    #             distance_km = self.calculate_distances(start_location=self.distance_mapping[start_city], end_location=self.distance_mapping[end_city])
+    #             if end_city not in all_mapped_distances[start_city].keys():
+    #                 all_mapped_distances[start_city][end_city] = distance_km
+    #
+    #     return all_mapped_distances
 
     framework_weighting = {'Location': 5,
                            'Salary': 5,
