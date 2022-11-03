@@ -154,7 +154,7 @@ ss.framework_weighting = {'Location': 5,
                            'Move Status': 5,
                            }
 url = r'https://github.com/mdc1991/prospecting/blob/main/data/Dummy_Candidate_Data.csv'
-dummy_data_df = pd.read_csv(url)
+dummy_data_df = pd.read_csv(url, sep=",")
 
 sectors = sorted(list(dummy_data_df['Sector'].unique()))
 locations = sorted(list(dummy_data_df['Location'].unique()))
