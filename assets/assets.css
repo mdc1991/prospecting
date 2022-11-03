@@ -1,0 +1,51 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Lato, sans-serif;
+    color: #3E3E3E;
+    background-color: white;
+}
+
+h1 {
+    font-size: 32px;
+    padding-bottom: 20px;
+}
+
+.user-selections{
+    width: 70%;
+}
+
+.input-text {
+    font-size: 18px;
+    padding-top: 5px;
+}
+
+.input-labels {
+    text-align: right;
+    vertical-align: center;
+}
+
+.dropdown-input {
+    padding-bottom: 10px
+}
+
+.rangeslider-input {
+    padding-bottom: 10px
+}
+
+.submit-button {
+    background-color: #FFF;
+    margin-top: 10px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: 2px solid #00263A;
+}
+
+.prospecting-section {
+    padding-bottom: 20px;
+}
