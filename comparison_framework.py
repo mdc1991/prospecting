@@ -4,7 +4,7 @@ warnings.simplefilter(action='ignore', category=FutureWarning)
 import pandas as pd
 import numpy as np
 # import geopandas as gpd
-from shapely.geometry import Point
+#from shapely.geometry import Point
 
 pd.options.display.max_columns = 500
 pd.set_option('display.width', 1000)
