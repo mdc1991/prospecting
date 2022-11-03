@@ -153,8 +153,8 @@ ss.framework_weighting = {'Location': 5,
                            'Last Move': 3,
                            'Move Status': 5,
                            }
-
-dummy_data_df = pd.read_excel(r'data\Dummy_Candidate_Data.xlsx')
+url = r'https://github.com/mdc1991/prospecting/blob/main/data/Dummy_Candidate_Data.xlsx'
+dummy_data_df = pd.read_excel(url)
 
 sectors = sorted(list(dummy_data_df['Sector'].unique()))
 locations = sorted(list(dummy_data_df['Location'].unique()))
