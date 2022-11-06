@@ -10,7 +10,8 @@ from dash import dcc
 from comparison_framework import SuitabilityScoreFramework
 
 #Instantiates the Dash app and identify the server
-app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP], meta_tags=[
+        {"name": "viewport", "content": "width=device-width, initial-scale=1"}])
 server = app.server
 
 def create_dropdown(label_text: str = None, dropdown_list: list = None, select_multi: bool = None, dropdown_id: str=None):
